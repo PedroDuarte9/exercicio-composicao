@@ -75,7 +75,7 @@ public class Worker {
     public Double income(int year, int month){
     double soma = baseSalary;
         for (HourContract c : contracts) {
-            
+
         }
     }
 }
