@@ -7,6 +7,7 @@ import entities.enums.WorkerLevel;
 
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 
 import static java.lang.String.format;
@@ -32,28 +33,30 @@ import static java.lang.String.format;
 public class Program {
     public static void main(String[] args) {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        Departament departament = new Departament();
-        Worker worker = new Worker();
+
+
         HourContract hourContract = new HourContract();
 
 
 
         System.out.println("Enter department's name: ");
-        departament.setName(sc.nextLine());
-        System.out.println(departament.getName());
+        String departament = sc.nextLine();
+
 
         System.out.println("Enter worker data:");
         System.out.print("Name: ");
-        worker.setName(sc.nextLine());
+        String workerName = sc.nextLine();
 
         System.out.print("Level: ");
-        WorkerLevel wl = WorkerLevel.valueOf(sc.nextLine());
+        String workerLevel = sc.nextLine();
 
         System.out.print("Base Salary: ");
-        worker.setBaseSalary(sc.nextDouble());
+        Double workerBaseSalary = sc.nextDouble();
+        Worker worker = new Worker(workerName, workerLevel.valueOf(workerLevel), workerBaseSalary, departament);
 
         System.out.print("How many contracts to this over ? ");
         int n = sc.nextInt();
@@ -71,9 +74,9 @@ public class Program {
 
         System.out.println("Enter the month and year to calculate income");
 
-        System.out.println("Name " + worker.getName());
-        System.out.println("Departament " + departament.getName());
-        System.out.println("Income for 08/2018: " + worker.income(2022,8));
+//        System.out.println("Name " + worker.getName());
+//        System.out.println("Departament " + departament.getName());
+//        System.out.println("Income for 08/2018: " + worker.income(2022,8));
 
 
         sc.close();

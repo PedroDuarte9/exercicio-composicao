@@ -2,14 +2,13 @@ package entities;
 
 import entities.enums.WorkerLevel;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class Worker {
 
-    SimpleDateFormat sdf =  new SimpleDateFormat("dd/MM/yyyy");
+
     private String name;
     private WorkerLevel level; // Usando como atributo uma classe de constantes(Enumeração)
     private Double baseSalary;
