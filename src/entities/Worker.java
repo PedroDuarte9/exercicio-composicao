@@ -2,12 +2,14 @@ package entities;
 
 import entities.enums.WorkerLevel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Worker {
 
-
+    SimpleDateFormat sdf =  new SimpleDateFormat("dd/MM/yyyy");
     private String name;
     private WorkerLevel level; // Usando como atributo uma classe de constantes(Enumeração)
     private Double baseSalary;
@@ -73,10 +75,16 @@ public class Worker {
     }
 
     public Double income(int year, int month){
-    double soma = baseSalary;
-
-        for (HourContract c : contracts) {
-
+        double soma = baseSalary;
+        Calendar cal = Calendar.getInstance();
+            for (HourContract c : contracts) {
+                cal.setTime(c.getDate());
+                int c_year = cal.get(Calendar.YEAR);
+                int c_month = 1 + cal.get(Calendar.MONTH);
+                if(year == c_year && month == c_month){
+                    soma += c.totalValue();
+                }
         }
+            return soma;
     }
 }

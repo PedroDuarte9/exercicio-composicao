@@ -5,6 +5,7 @@ import entities.HourContract;
 import entities.Worker;
 import entities.enums.WorkerLevel;
 
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ import static java.lang.String.format;
 public class Program {
     public static void main(String[] args) {
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         Scanner sc = new Scanner(System.in);
         Departament departament = new Departament();
@@ -52,14 +53,14 @@ public class Program {
         WorkerLevel wl = WorkerLevel.valueOf(sc.nextLine());
 
         System.out.print("Base Salary: ");
-        worker.setSalary(sc.nextDouble());
+        worker.setBaseSalary(sc.nextDouble());
 
         System.out.print("How many contracts to this over ? ");
         int n = sc.nextInt();
         for(int i = 0; i>n; i++) {
             System.out.print("Enter contract" + i + "# data: ");
-//            System.out.print("Date (DD/MM/YYYY): ");
-//            hourContarct.setDate(new java.time.LocalDateTime(sc.nextLine()).format());
+            System.out.print("Date (DD/MM/YYYY): ");
+
 
             System.out.print("Value per hour: ");
             hourContract.setValuePerHour(sc.nextDouble());
