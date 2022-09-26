@@ -12,10 +12,10 @@ public class Worker {
     private String name;
     private WorkerLevel level; // Usando como atributo uma classe de constantes(Enumeração)
     private Double baseSalary;
-    //Aqui está a composição
+    //Aqui está a composição a baixo temos dois acessos por composição
     private Departament departament;
-    //Aqui usa-se uma lista pois são vários contratos
-    private List<HourContract> contracts = new ArrayList<>();
+
+    private List<HourContract> contracts = new ArrayList<>();//Aqui usa-se uma lista pois são vários contratos
     public Worker() {
     }
 

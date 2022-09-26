@@ -7,7 +7,9 @@ import entities.enums.WorkerLevel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -55,10 +57,10 @@ public class Program {
         System.out.print("Base Salary: ");
         Double workerBaseSalary = sc.nextDouble();
         Worker worker = new Worker(workerName, WorkerLevel.valueOf(workerLevel), workerBaseSalary, new Departament(departamentName));
-//
+
         System.out.print("How many contracts to this over ? ");
         int n = sc.nextInt();
-        for(int i = 1; i>n; i++) {
+        for(int i = 0; i<n; i++) {
             System.out.print("Enter contract" + i + "# data: ");
             System.out.print("Date (DD/MM/YYYY): ");
             Date contractDate = sdf.parse(sc.next());
@@ -70,11 +72,15 @@ public class Program {
             worker.addContracts(contract);
 
         }
-
-        System.out.println("Enter the month and year to calculate income");
-
-//        System.out.println("Name " + worker.getName());
-//        
+        System.out.println();
+        System.out.println("Enter the month and year to calculate income (MM/YYYY): ");
+        String monthAndYear = sc.next();
+        //SUBSTRING: Retorna uma nova string que é a substring de uma string especificada
+        int month = Integer.parseInt(monthAndYear.substring(0,2));//Utilizamos está definição para recortar uma data, nesse caso aqui estamos recortando da posição 0 até a posoção 2 que será o mês
+        int year = Integer.parseInt(monthAndYear.substring(3));//nesse caso aqui estamos recortando a partir da posição 3
+        System.out.println("Name: " + worker.getName());
+        System.out.println("Department: " + worker.getDepartament().getName() );
+        System.out.println("Income: " + monthAndYear + " " + worker.income(year, month));
 
 
         sc.close();
